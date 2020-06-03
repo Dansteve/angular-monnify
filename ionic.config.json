@@ -1,0 +1,7 @@
+{
+  "name": "monnify",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
