@@ -1,20 +1,25 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Blank
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> -->
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div id="container" class=" ion-text-center">
+    <p><strong class="ion-padding">Welcome to Dansteve Adekanbi</strong></p>
+    <p><strong class="ion-padding">Angular-Monnify package testing</strong></p>
+    <br>
+    <ion-button angular-Monnify class="ion-no-margin" shape="round" color="success" [monnifyOptions]="options"
+      (onclose)="paymentCancel($event)" (onComplete)="paymentDone($event)" (click)="paymentInit($event)">
+      Pay
+    </ion-button>
   </div>
 </ion-content>

@@ -1,0 +1,52 @@
+{
+  "name": "angular-monnify",
+  "version": "1.1.0",
+  "peerDependencies": {
+    "@angular/common": "^8.0.3",
+    "@angular/core": "^8.0.3",
+    "ng-packagr": "^9.1.5"
+  },
+  "scripts": {
+    "build": "ng-packagr -p ng-package.json"
+  },
+  "keywords": [
+    "angular",
+    "teamapt",
+    "monnify",
+    "payment",
+    "transactions",
+    "card",
+    "ussd",
+    "bank",
+    "qr_pay",
+    "mobilemoney"
+  ],
+  "author": {
+    "email": "danstevea@gmail.com",
+    "name": "Dansteve Adekanbi",
+    "url": "https://github.com/dansteve",
+    "website": "https://meetdansteve.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dansteve/angular-monnify.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dansteve/angular-monnify/issues"
+  },
+  "homepage": "https://github.com/dansteve/angular-monnify#readme",
+  "description": "Angular wrapper for integrating monnify transactions",
+  "main": "bundles/angular-monnify.umd.js",
+  "module": "fesm5/angular-monnify.js",
+  "es2015": "fesm2015/angular-monnify.js",
+  "esm5": "esm5/angular-monnify.js",
+  "esm2015": "esm2015/angular-monnify.js",
+  "fesm5": "fesm5/angular-monnify.js",
+  "fesm2015": "fesm2015/angular-monnify.js",
+  "typings": "angular-monnify.d.ts",
+  "metadata": "angular-monnify.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+  }
+}

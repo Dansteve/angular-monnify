@@ -25,3 +25,7 @@
 #container a {
   text-decoration: none;
 }
+
+ion-button{
+  --ion-color-base: linear-gradient(135deg, #00afef, #337ab7) !important;
+}
