@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { AngularMonnifyModule } from 'angular-monnify';
+import { AngularMonnifyModule } from 'projects/angular-monnify/src/public_api';
 
 
 

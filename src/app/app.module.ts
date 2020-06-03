@@ -9,7 +9,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AngularMonnifyModule } from 'angular-monnify';
+import { AngularMonnifyModule } from 'projects/angular-monnify/src/public_api';
+
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

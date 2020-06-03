@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { MonnifyOptions } from 'angular-monnify';
+import { MonnifyOptions } from 'projects/angular-monnify/src/public_api';
 
 
 @Component({
