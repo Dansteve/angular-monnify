@@ -40,7 +40,7 @@ There are two available options
 - **AngularMonnifyComponent**: Renders a button which when clicked loads monnify Inline in an iframe
 
   ```html
-  <angular-monnify
+  <angular-Monnify
     [customerFullName]="'some-random-str'"
     [customerMobileNumber]="'some-random-str'"
     [paymentDescription]="'some-random-str'"
@@ -54,14 +54,14 @@ There are two available options
     (onComplete)="paymentDone($event)"
   >
     Pay with Monnify
-  </angular-monnify>
+  </angular-Monnify>
   ```
 
 - **AngularMonnifyDirective**: A directive that loads monnify inline in an iframe when clicked
 
 ```html
 <button
-  angular-monnify
+  angular-Monnify
   [customerFullName]="'some-random-str'"
   [customerMobileNumber]="'some-random-str'"
   [paymentDescription]="'some-random-str'"
@@ -116,7 +116,7 @@ Also you can use the `monnifyOptions` object like so:
 
 ```html
 <button
-  angular-monnify
+  angular-Monnify
   [monnifyOptions]="options"
   (paymentInit)="paymentCancel()"
   (close)="paymentCancel()"
@@ -185,7 +185,7 @@ and this in your component
 
 ```html
 <button
-  angular-monnify
+  angular-Monnify
   [customerFullName]="'some-random-str'"
   [customerMobileNumber]="'some-random-str'"
   [paymentDescription]="'some-random-str'"
