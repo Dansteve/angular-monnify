@@ -226,7 +226,7 @@ Then `apiKey2` and `contractCode2` would be used instead
 | feePercentage                       | The percentage of the transaction fee to be borne by the sub account                                                                                                                                         |
 | splitPercentage                     | The percentage of the amount paid to be split into the sub account.                                                                                                                                          |
 
-> For more information checkout [monnify's documentation](https://docs.teamapt.com/display/MON/Monnify+Web+SDK)
+> For more information checkout [monnify's documentation](https://teamapt.atlassian.net/wiki/spaces/MON/pages/212008793/Monnify+Web+SDK)
 
 ## Contributing
 

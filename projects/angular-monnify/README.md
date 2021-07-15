@@ -1,4 +1,4 @@
-# ANGULAR-MONNIFY
+# angular-Monnify
 
 > This is an angular module that abstracts the complexity of making monnify payments.
 
@@ -11,7 +11,7 @@
 ### 1. Install the module
 
 ```sh
-npm install --save angular-monnify
+npm install --save angular-Monnify
 ```
 
 ### 2. Import the module
@@ -21,7 +21,7 @@ In your `app.module.ts` or any module where the component or directive would be 
 ```ts
 import { NgModule } from '@angular/core';
 
-import { AngularMonnifyModule } from 'angular-monnify';
+import { AngularMonnifyModule } from 'angular-Monnify';
 ...
 
 @NgModule({
@@ -40,7 +40,7 @@ There are two available options
 - **AngularMonnifyComponent**: Renders a button which when clicked loads monnify Inline in an iframe
 
   ```html
-  <angular-monnify
+  <angular-Monnify
     [customerFullName]="'some-random-str'"
     [customerMobileNumber]="'some-random-str'"
     [paymentDescription]="'some-random-str'"
@@ -54,14 +54,14 @@ There are two available options
     (onComplete)="paymentDone($event)"
   >
     Pay with Monnify
-  </angular-monnify>
+  </angular-Monnify>
   ```
 
 - **AngularMonnifyDirective**: A directive that loads monnify inline in an iframe when clicked
 
 ```html
 <button
-  angular-monnify
+  angular-Monnify
   [customerFullName]="'some-random-str'"
   [customerMobileNumber]="'some-random-str'"
   [paymentDescription]="'some-random-str'"
@@ -116,7 +116,7 @@ Also you can use the `monnifyOptions` object like so:
 
 ```html
 <button
-  angular-monnify
+  angular-Monnify
   [monnifyOptions]="options"
   (paymentInit)="paymentCancel()"
   (close)="paymentCancel()"
@@ -130,7 +130,7 @@ And then in your `component.ts`
 
 ```ts
 import { Component } from "@angular/core";
-import { MonnifyOptions } from "angular-monnify";
+import { MonnifyOptions } from "angular-Monnify";
 
 @Component({
   selector: "app-root",
@@ -185,7 +185,7 @@ and this in your component
 
 ```html
 <button
-  angular-monnify
+  angular-Monnify
   [customerFullName]="'some-random-str'"
   [customerMobileNumber]="'some-random-str'"
   [paymentDescription]="'some-random-str'"
@@ -226,7 +226,7 @@ Then `apiKey2` and `contractCode2` would be used instead
 | feePercentage                       | The percentage of the transaction fee to be borne by the sub account                                                                                                                                         |
 | splitPercentage                     | The percentage of the amount paid to be split into the sub account.                                                                                                                                          |
 
-> For more information checkout [monnify's documentation](https://docs.teamapt.com/display/MON/Monnify+Web+SDK)
+> For more information checkout [monnify's documentation](https://teamapt.atlassian.net/wiki/spaces/MON/pages/212008793/Monnify+Web+SDK)
 
 ## Contributing
 

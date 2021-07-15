@@ -9,7 +9,7 @@ function copyArtifact(file) {
     path.join(__dirname, "../projects/angular-monnify", file),
     (err) => {
       if (err) {
-        console.log("An error occurred", e.message);
+        console.log("An error occurred", err.message);
       } else {
         console.log(`${file} copied`);
       }
