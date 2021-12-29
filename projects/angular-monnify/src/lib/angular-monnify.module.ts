@@ -14,7 +14,7 @@ import { API_KEY, IS_TEST_MODE, CONTRACT_CODE } from './monnify-keys';
 })
 export class AngularMonnifyModule {
   // tslint:disable-next-line:variable-name
-  static forRoot(apiKey: string, contractCode: string, isTestMode: boolean = false): ModuleWithProviders {
+  static forRoot(apiKey: string, contractCode: string, isTestMode: boolean = false): ModuleWithProviders<any> {
     return {
       ngModule: AngularMonnifyModule,
       providers: [

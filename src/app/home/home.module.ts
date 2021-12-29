@@ -19,4 +19,4 @@ import { AngularMonnifyModule } from 'projects/angular-monnify/src/public_api';
   ],
   declarations: [HomePage]
 })
-export class HomePageModule {}
+export class HomePageModule { }

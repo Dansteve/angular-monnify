@@ -2,8 +2,6 @@
   "name": "angular-monnify",
   "version": "1.3.1",
   "peerDependencies": {
-    "@angular/common": "^8.0.3",
-    "@angular/core": "^8.0.3",
     "ng-packagr": "^9.1.5"
   },
   "scripts": {
@@ -46,7 +44,5 @@
   "fesm2015": "fesm2015/angular-monnify.js",
   "typings": "angular-monnify.d.ts",
   "metadata": "angular-monnify.metadata.json",
-  "sideEffects": false,
-  "dependencies": {
-  }
+  "sideEffects": false
 }
