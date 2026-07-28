@@ -7,10 +7,10 @@
 
 ---
 
-![Monnify checkout: bank transfer, card and success states](App.png?raw=true 'Monnify checkout via angular-monnify')
+![Monnify checkout: bank transfer, card and success states](https://raw.githubusercontent.com/Dansteve/angular-monnify/master/App.png 'Monnify checkout via angular-monnify')
 
 <p align="center">
-  <img src="docs/demo-app.png?raw=true" alt="The bundled demo app" width="460">
+  <img src="https://raw.githubusercontent.com/Dansteve/angular-monnify/master/docs/demo-app.png" alt="The bundled demo app" width="460">
 </p>
 
 ---
