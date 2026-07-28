@@ -1,7 +1,7 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/angular-monnify",
-  "deleteDestPath": false,
+  "assets": ["CHANGELOG.md", "LICENSE.md"],
   "lib": {
     "entryFile": "src/public_api.ts"
   }

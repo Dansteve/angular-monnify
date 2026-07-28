@@ -1,10 +1,11 @@
-import { EventEmitter } from '@angular/core';
-
 export interface MonnifyOptions {
   /**
-   * development status | Should be set to true when using the sandbox and false when on production
+   * Development status. Set to `true` to load the Monnify **sandbox** SDK, and
+   * `false` (the default) to load the **live production** SDK.
+   *
+   * See {@link https://developers.monnify.com/ the Monnify developer docs}.
    */
-  isTestMode?: true | false;
+  isTestMode?: boolean;
   /**
    * Merchant's API Key (Can be found on the Monnify dashboard)
    */
@@ -43,11 +44,11 @@ export interface MonnifyOptions {
    */
   paymentDescription?: string;
   /**
-   * Transaction Hash added to transaction response for security purposes. 
-   *  Click here {@link https://docs.teamapt.com/display/MON/Calculating+the+Transaction+Hash Monnify}.
-   *  for information on how to calculate the hash value
+   * Transaction Hash added to the transaction response for security purposes.
+   * See {@link https://developers.monnify.com/ the Monnify developer docs} for
+   * information on how to calculate the hash value.
    */
-  transactionHash?: {};
+  transactionHash?: object;
   /**
    * Status of the transaction ("PAID", "PENDING" or "FAILED")
    */
@@ -95,29 +96,13 @@ export interface PrivateMonnifyOptions extends MonnifyOptions {
    * failed page supplied by the merchant here based on response
    * @param response?: The server response
    */
-  onComplete: (response?: any) => void;
+  onComplete: (response?: unknown) => void;
   /**
    * A function to be called when the pay modal is closed.
    */
-  onClose: (response?: any) => void;
+  onClose: (response?: unknown) => void;
   /**
    * A function to be called when payment is about to begin
    */
-  init: () => void;
-}
-
-export interface PrivateMonnifyOptionsWithEmitters extends MonnifyOptions {
-  /**
-   * A function to be called on successful card charge. User’s can always be redirected to a successful or
-   * failed page supplied by the merchant here based on response
-   */
-  onComplete: EventEmitter<any>;
-  /**
-   * A function to be called when the pay modal is closed.
-   */
-  onClose: EventEmitter<any>;
-  /**
-   * A function to be called when payment is about to begin
-   */
-  init: EventEmitter<void>;
+  init?: () => void;
 }

@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
+
 import { HomePage } from './home.page';
-
 import { HomePageRoutingModule } from './home-routing.module';
-import { AngularMonnifyModule } from 'projects/angular-monnify/src/public_api';
-
-
+import { AngularMonnifyModule } from 'angular-monnify';
 
 @NgModule({
   imports: [
@@ -15,8 +13,10 @@ import { AngularMonnifyModule } from 'projects/angular-monnify/src/public_api';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    AngularMonnifyModule.forRoot('MK_TEST_SAF7HR5F3F', '4934121693', true)
+    // Credentials come from the root `forRoot()` call in AppModule; the plain
+    // module import is all a feature module needs.
+    AngularMonnifyModule,
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
 })
-export class HomePageModule { }
+export class HomePageModule {}

@@ -31,3 +31,10 @@ npm-debug.log*
 /*platforms
 /*plugins
 /*www
+
+# Angular CLI build cache and compiler scratch output
+/.angular
+/out-tsc
+
+# npm pack output
+*.tgz
