@@ -7,21 +7,28 @@
 
 ---
 
-## ⚠️ Security notice — upgrade from 1.3.2 or earlier immediately
+![Monnify checkout: bank transfer, card and success states](App.png?raw=true 'Monnify checkout via angular-monnify')
 
-**Every release up to and including `1.3.2` loaded the Monnify *sandbox* SDK, even in production.**
+<p align="center">
+  <img src="docs/demo-app.png?raw=true" alt="The bundled demo app" width="460">
+</p>
 
-`AngularMonnifyService.loadScript()` contained an `if (this.isTestMode)` whose two branches were byte-for-byte identical — both pointed at `https://sandbox.sdk.monnify.com/plugin/monnify.js`. Setting `isTestMode: false` did nothing. The production SDK URL (`https://sdk.monnify.com/plugin/monnify.js`) was never used by the library.
+---
 
-**What this means for you if you shipped 1.x to production:**
+## Upgrading from 1.3.2 — what actually changed
 
-- Your customers were sent through the Monnify **sandbox** checkout.
-- Sandbox transactions do not move real money and do not appear in your live dashboard.
-- Any payment your app reported as successful via `(onComplete)` was a sandbox payment.
+1.3.2 and earlier had a bug where `AngularMonnifyService.loadScript()` contained an `if (this.isTestMode)` whose two branches were identical — both requested `https://sandbox.sdk.monnify.com/plugin/monnify.js`.
 
-**You should:** upgrade to `2.0.0`, confirm `isTestMode` is `false` (or simply omitted — it now defaults to `false`) in your production configuration, and reconcile any transactions you believed were live while running 1.x.
+**In practice this had no runtime effect, and there is nothing for you to reconcile.** The two hosts serve a byte-for-byte identical file:
 
-`2.0.0` fixes this, and a regression test now asserts that test mode and production can never resolve to the same URL.
+```
+sandbox.sdk.monnify.com/plugin/monnify.js  sha256 4b217d7df359faaa2eb21e7461cb0e6c62ec309eb204f462b5b7328dca7fc6be
+sdk.monnify.com/plugin/monnify.js          sha256 4b217d7df359faaa2eb21e7461cb0e6c62ec309eb204f462b5b7328dca7fc6be
+```
+
+and the SDK selects its environment from your API key prefix (`MK_PROD_`), not from the host the script came from. **Live keys always reached the live gateway.** The dead branch was still a real bug — relying on two URLs staying identical is fragile, and Monnify could diverge them at any time — so 2.0.0 fixes it and a regression test now asserts the two modes can never resolve to the same URL.
+
+The changes that *will* affect you are the Angular version requirement, the package output format, and several genuine correctness bugs — see [Migrating](#migrating-from-1x-to-20).
 
 ---
 
