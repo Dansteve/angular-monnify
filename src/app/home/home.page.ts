@@ -23,20 +23,19 @@ export class HomePage {
       name: 'Damilare',
       age: 45,
     },
-    incomeSplitConfig: [
-      {
-        subAccountCode: 'MFY_SUB_342113621921',
-        feePercentage: 50,
-        splitAmount: 1900,
-        feeBearer: true,
-      },
-      {
-        subAccountCode: 'MFY_SUB_342113621922',
-        feePercentage: 50,
-        splitAmount: 2100,
-        feeBearer: true,
-      },
-    ],
+    // Split payments are commented out on purpose. A subAccountCode only
+    // exists under the merchant account that created it, so these demo codes
+    // are rejected against the public test contract above. Uncomment and
+    // substitute your own sub-accounts from the Monnify dashboard to try it.
+    //
+    // incomeSplitConfig: [
+    //   {
+    //     subAccountCode: 'MFY_SUB_XXXXXXXXXXXX',
+    //     feePercentage: 50,
+    //     splitAmount: 1900,
+    //     feeBearer: true,
+    //   },
+    // ],
   };
 
   paymentInit(): void {

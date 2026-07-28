@@ -29,7 +29,10 @@
           "options": {
             "tsConfig": "projects/angular-monnify/tsconfig.spec.json",
             "karmaConfig": "projects/angular-monnify/karma.conf.js",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         },
         "lint": {
@@ -58,7 +61,10 @@
             },
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": ["src/zone-flags.ts", "zone.js"],
+            "polyfills": [
+              "src/zone-flags.ts",
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -72,7 +78,10 @@
                 "output": "svg"
               }
             ],
-            "styles": ["src/theme/variables.scss", "src/global.scss"],
+            "styles": [
+              "src/theme/variables.scss",
+              "src/global.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -117,6 +126,9 @@
           "configurations": {
             "production": {
               "buildTarget": "app:build:production"
+            },
+            "development": {
+              "buildTarget": "app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -132,7 +144,10 @@
           "options": {
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "styles": [],
             "scripts": [],
             "assets": [
@@ -147,7 +162,10 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
