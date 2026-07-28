@@ -1,0 +1,72 @@
+name: Publish to npm
+
+# Fires when you publish a GitHub Release. Draft a release from a tag and this
+# builds, tests, and pushes the library to npmjs.com.
+on:
+  release:
+    types: [published]
+  # Manual escape hatch: re-run a publish without cutting another release.
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Required for npm Trusted Publishing (OIDC) and build provenance.
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      # Trusted Publishing requires npm >= 11.5.1. Runner images ship older.
+      - name: Use an npm that supports trusted publishing
+        run: npm install -g npm@latest
+
+      - run: npm ci
+
+      # Karma needs a real browser. The runner image ships Chrome; karma.conf.js
+      # defines a ChromeHeadlessNoSandbox launcher for the sandboxless CI env.
+      - name: Point Karma at the runner's Chrome
+        run: echo "CHROME_BIN=$(which google-chrome || which chromium-browser)" >> "$GITHUB_ENV"
+
+      - run: npm run lint
+
+      - run: npm run test:ci
+
+      - run: npm run build:lib
+
+      - name: Check version matches the tag
+        if: github.event_name == 'release'
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          PKG=$(node -p "require('./projects/angular-monnify/package.json').version")
+          echo "tag=$TAG library package.json=$PKG"
+          if [ "$TAG" != "$PKG" ]; then
+            echo "::error::Tag $TAG does not match library version $PKG"
+            exit 1
+          fi
+
+      # Angular libraries publish the ng-packagr output, not the workspace root.
+      # Guard against the stale View Engine fields creeping back in.
+      - name: Sanity-check the built package
+        run: |
+          cd dist/angular-monnify
+          node -e "
+            const p = require('./package.json');
+            const stale = ['es2015','esm5','esm2015','fesm5','metadata'].filter(k => k in p);
+            if (stale.length) { console.error('::error::stale View Engine fields: ' + stale); process.exit(1); }
+            if (!p.exports) { console.error('::error::missing exports map'); process.exit(1); }
+            console.log('ok:', p.name, p.version);
+          "
+
+      # No NODE_AUTH_TOKEN. Trusted Publishing exchanges the OIDC token for
+      # short-lived credentials, so there is no secret to leak or rotate, and it
+      # is not blocked by the 2FA on the account.
+      - name: Publish
+        run: npm publish ./dist/angular-monnify --access public
