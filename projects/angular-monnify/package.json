@@ -32,11 +32,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dansteve/angular-monnify.git"
+    "url": "git+https://github.com/Dansteve/angular-monnify.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dansteve/angular-monnify/issues"
+    "url": "https://github.com/Dansteve/angular-monnify/issues"
   },
-  "homepage": "https://github.com/dansteve/angular-monnify#readme"
+  "homepage": "https://github.com/Dansteve/angular-monnify#readme"
 }
