@@ -342,7 +342,7 @@ import { MONNIFY_LIVE_SDK_URL, MONNIFY_SANDBOX_SDK_URL } from 'angular-monnify';
 
 ### 1. Check your production mode (see the notice at the top)
 
-This is the reason 2.0 exists. Confirm `isTestMode` is `false` for production builds, and reconcile transactions taken while on 1.x.
+This is the reason 2.0 exists. Confirm `isTestMode` is `false` for production builds. As explained in [the notice above](#upgrading-from-132--what-actually-changed), the 1.x bug had no runtime effect — there is nothing to reconcile.
 
 ### 2. Angular 16+ is required
 

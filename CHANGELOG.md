@@ -1,5 +1,56 @@
 # Changelog
 
+## 2.0.2
+
+### 📝 Corrected
+
+- **Retracted the false security claim in the 2.0.0 notes below.** The 2.0.0 entry told anyone
+  who had shipped 1.x that their live customers were routed through the sandbox checkout, that
+  no real money moved, and that they should reconcile their transactions. **None of that was
+  true.** The correction had been made in the README for 2.0.1, but `CHANGELOG.md` ships inside
+  the npm tarball and was missed, so the retracted wording stayed on npm. See the 2.0.0 entry
+  for the corrected account.
+- Removed the leftover "reconcile transactions taken while on 1.x" instruction from the
+  *Migrating* section of the README, which contradicted the corrected notice at the top of the
+  same file.
+
+### 🐛 Fixed
+
+- `repository.url`, `bugs.url` and `homepage` now spell the GitHub owner `Dansteve` rather than
+  `dansteve`. npm compares this against the provenance statement case-sensitively, so the
+  published 2.0.1 metadata pointed at the wrong-cased URL.
+- README screenshots now use absolute `raw.githubusercontent.com` URLs. The PNGs are not part of
+  the published tarball, so the previous relative paths rendered as broken images on npm.
+
+### 🧹 Internal
+
+- Publishing now runs from CI on GitHub Release via npm Trusted Publishing (OIDC).
+- Angular toolchain moved to 20.3.27. Dependabot had proposed this as three separate PRs, each
+  bumping one framework package and leaving its siblings behind; because Angular's packages
+  peer-depend on each other at an exact version, every one of those lockfiles failed `npm ci`.
+  The whole family now moves together.
+
+No library code changed in this release. It is documentation, package metadata and tooling only.
+
+## 2.0.1
+
+### 📝 Corrected
+
+- Rewrote the 1.3.2 upgrade notice in the README. The 2.0.0 release had claimed that loading the
+  sandbox SDK host sent live traffic to the sandbox; it did not, and the notice now explains what
+  actually happened, with the matching file hashes.
+
+### 🐛 Fixed
+
+- Restored `ng serve` for the bundled demo app.
+- Dropped the demo's split-payment configuration, which referenced a `subAccountCode` belonging
+  to a retired contract. A sub-account only resolves under the merchant account that created it,
+  so the demo values were always rejected.
+
+### 📚 Docs
+
+- Added checkout screenshots.
+
 ## 2.0.0
 
 ### 🔒 Security
@@ -8,10 +59,25 @@
   including `1.3.2`, `loadScript()` had an `if (this.isTestMode)` whose two branches were
   identical — both loaded `https://sandbox.sdk.monnify.com/plugin/monnify.js`. Setting
   `isTestMode: false` had no effect and the production SDK
-  (`https://sdk.monnify.com/plugin/monnify.js`) was never used. **If you shipped 1.x to
-  production, your customers were sent through the sandbox checkout and no real money moved.**
-  Upgrade and reconcile any transactions you believed were live.
-  A regression test now asserts that test mode and production can never resolve to the same URL.
+  (`https://sdk.monnify.com/plugin/monnify.js`) was never requested.
+
+  > **Correction, added in 2.0.2.** This entry originally said that live customers had been sent
+  > through the sandbox checkout, that no real money moved, and that you should reconcile any
+  > transactions you believed were live. **That was wrong and is retracted.** The two hosts serve
+  > a byte-for-byte identical file:
+  >
+  > ```
+  > sandbox.sdk.monnify.com/plugin/monnify.js  sha256 4b217d7df359faaa2eb21e7461cb0e6c62ec309eb204f462b5b7328dca7fc6be
+  > sdk.monnify.com/plugin/monnify.js          sha256 4b217d7df359faaa2eb21e7461cb0e6c62ec309eb204f462b5b7328dca7fc6be
+  > ```
+  >
+  > and the SDK selects its environment from your API key prefix (`MK_PROD_`), not from the host
+  > the script was loaded from. **Live keys always reached the live gateway, and there is nothing
+  > for you to reconcile.**
+
+  The dead branch was still a real bug — relying on the two URLs staying identical is fragile,
+  and Monnify could diverge them at any time — so 2.0.0 fixes it, and a regression test now
+  asserts that test mode and production can never resolve to the same URL.
 - `isTestMode` now defaults to `false` (production) when nothing is registered, so an
   unconfigured app cannot silently transact against the sandbox.
 
